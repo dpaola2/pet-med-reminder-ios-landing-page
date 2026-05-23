@@ -7,6 +7,10 @@ title: Pet Med Reminder
 
 A simple iOS app for tracking your pet's medications, supplements, treats, and scheduled care items. Designed for the human caregiver, not the pet.
 
+<p align="center">
+  <img src="assets/app-store-hero.png" alt="Pet Med Reminder Today screen showing scheduled doses for two pets — Murphy and Juno — with completed morning doses and an upcoming dose due in 18 minutes" width="280">
+</p>
+
 [**Download on the App Store →**](https://apps.apple.com/app/idTBD)
 
 ---
