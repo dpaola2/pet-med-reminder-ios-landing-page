@@ -99,6 +99,12 @@ sitemap: false
     capture_pageview: false,
     capture_pageleave: false,
     disable_session_recording: true,
+    // Both of these default ON and are steered by PostHog's remote config, so
+    // leaving them unset means the project dashboard can silently start doing
+    // things on a page a clinic hands to a client. Surveys can render a modal;
+    // dead-click capture is autocapture by another name.
+    disable_surveys: true,
+    capture_dead_clicks: false,
     // Anonymous events only. The privacy policy promises no identifier that
     // links back to a person, and this page is handed out in a clinic, so it
     // must not be the thing that quietly starts building profiles.
