@@ -60,7 +60,7 @@ The app records a small number of anonymous events through [PostHog](https://pos
 
 Most of this website is static and records nothing at all. One page, `/vet`, is the link printed on cards handed out by veterinary clinics, and it records a single anonymous event so we can tell how many people that channel actually reaches. That event contains a timestamp, whether the visitor is on an iPhone, and the referring page if there is one.
 
-It does not create a profile for you, does not set an advertising identifier, does not record your session, and is configured to discard your IP address. No other page on this site records anything.
+It does not create a profile for you, does not set an advertising identifier, and does not record your session. As with any web request, our analytics provider receives the IP address your request came from. No other page on this site records anything.
 
 ### Crash reports
 
