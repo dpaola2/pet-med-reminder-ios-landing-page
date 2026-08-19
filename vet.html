@@ -1,0 +1,133 @@
+---
+permalink: /vet/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Pet Med Reminder</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1a1a1a;
+    --muted: #5c5c5c;
+    --rule: #e4e4e4;
+    --accent: #2f6f4f;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #151515;
+      --fg: #f2f2f2;
+      --muted: #a6a6a6;
+      --rule: #333333;
+      --accent: #7fc0a0;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    padding: 2.5rem 1.25rem 3rem;
+  }
+  main { width: 100%; max-width: 30rem; }
+  h1 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 1.25rem; letter-spacing: -0.01em; }
+  p { margin: 0 0 1.1rem; }
+  .lede { font-size: 1.0625rem; }
+  .muted { color: var(--muted); font-size: 0.9375rem; }
+  .cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.85rem 1.4rem;
+    border-radius: 10px;
+    margin: 0.35rem 0 1.4rem;
+  }
+  @media (prefers-color-scheme: dark) { .cta { color: #10231a; } }
+  hr { border: 0; border-top: 1px solid var(--rule); margin: 1.75rem 0; }
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Your veterinarian suggested keeping a record of your pet&rsquo;s medication.</h1>
+
+  <p class="lede">Pet Med Reminder is a free iPhone app that reminds you when a dose is due and keeps a log you can bring to the next appointment.</p>
+
+  <p id="redirect-note" class="muted hidden">Taking you to the App Store&hellip;</p>
+
+  <a class="cta" id="store-link" href="https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484">View on the App Store</a>
+
+  <p class="muted" id="other-platform">
+    Not on an iPhone? The app is iPhone-only for now. A paper log works too: write down each dose as you give it, and bring it with you to the recheck. What matters is that your vet can see what actually happened between visits.
+  </p>
+
+  <hr>
+
+  <p class="muted">
+    No account, no signup. Your pet&rsquo;s information stays on your own device and your own iCloud.
+    <a href="../">Privacy policy</a>
+  </p>
+</main>
+
+<script>
+(function () {
+  var STORE_URL = "https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484";
+  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  // PostHog. Same project as the iOS app (Zen Space Labs, id 436969), so a vet
+  // referral and the install funnel it feeds sit in one project.
+  //
+  // Deliberately narrow, for the same reason PMR-17 turned screen autocapture
+  // off in the app: autocapture on a page like this produces volume, not signal.
+  // One named event, fired once.
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+
+  posthog.init("phc_oiF5APNqHnUSiXrvkzsnze4LukTe7WiFrYAXzo6zKQLC", {
+    api_host: "https://us.i.posthog.com",
+    autocapture: false,
+    capture_pageview: false,
+    capture_pageleave: false,
+    disable_session_recording: true,
+    // Anonymous events only. The privacy policy promises no identifier that
+    // links back to a person, and this page is handed out in a clinic, so it
+    // must not be the thing that quietly starts building profiles.
+    person_profiles: "never",
+    persistence: "memory",
+    sanitize_properties: function (props) {
+      props.$ip = null;
+      return props;
+    }
+  });
+
+  // sendBeacon so the event survives the redirect below. This is the whole
+  // point of the page: a hit that is not recorded before navigation is a hit
+  // that did not happen.
+  posthog.capture("vet_referral_landed", {
+    platform: isIOS ? "ios" : "other",
+    referrer: document.referrer || null
+  }, { transport: "sendBeacon" });
+
+  // iPhone visitors go straight through; the delay is only there to give the
+  // beacon a moment. Everyone else stays and reads the paper-log fallback,
+  // because sending an Android owner to an iPhone-only App Store page is a
+  // dead end that reflects badly on the vet who handed them the card.
+  if (isIOS) {
+    document.getElementById("redirect-note").classList.remove("hidden");
+    document.getElementById("other-platform").classList.add("hidden");
+    setTimeout(function () { window.location.replace(STORE_URL); }, 900);
+  }
+})();
+</script>
+</body>
+</html>

@@ -11,7 +11,7 @@ A simple iOS app for tracking your pet's medications, supplements, treats, and s
   <img src="assets/app-store-hero.png" alt="Pet Med Reminder Today screen showing scheduled doses for two pets — Murphy and Juno — with completed morning doses and an upcoming dose due in 18 minutes" width="280">
 </p>
 
-[**Download on the App Store →**](https://apps.apple.com/app/idTBD)
+[**Download on the App Store →**](https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484)
 
 ---
 
@@ -28,7 +28,7 @@ Built for dogs and cats. Multi-pet from day one. No account required.
 
 ## Privacy Policy
 
-**Last updated:** 2026-05-23
+**Last updated:** 2026-08-19
 
 Pet Med Reminder is built for people who don't want to think about whether their pet app is harvesting their data. Here is exactly what happens.
 
@@ -55,6 +55,12 @@ The app records a small number of anonymous events through [PostHog](https://pos
 - The frequency mode of the care item being logged (daily / every-N-days / specific days of week)
 
 **These events do not contain your name, your pet's name, your email, your IP address, your device ID, or any identifier that could be linked back to you.** PostHog is configured to not collect IP addresses or device identifiers.
+
+### This website
+
+Most of this website is static and records nothing at all. One page, `/vet`, is the link printed on cards handed out by veterinary clinics, and it records a single anonymous event so we can tell how many people that channel actually reaches. That event contains a timestamp, whether the visitor is on an iPhone, and the referring page if there is one.
+
+It does not create a profile for you, does not set an advertising identifier, does not record your session, and is configured to discard your IP address. No other page on this site records anything.
 
 ### Crash reports
 
