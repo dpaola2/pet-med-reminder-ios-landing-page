@@ -28,13 +28,13 @@ Built for dogs and cats. Multi-pet from day one. No account required.
 
 ## Privacy Policy
 
-**Last updated:** 2026-08-19
+**Last updated:** 2026-09-27
 
-Pet Med Reminder is built for people who don't want to think about whether their pet app is harvesting their data. Here is exactly what happens.
+Pet Med Reminder is built for people who don't want to think about whether their pet app is harvesting their data. Here is exactly what happens, including the usage data the app sends so we can see what works and what doesn't.
 
 ### Data we collect about you
 
-**None.** Pet Med Reminder does not require an account, does not ask for your email, does not ask for your name, does not access your contacts, does not use your camera (except when *you* attach a pet photo, which never leaves your device + your iCloud), does not request your location, and does not link any identifier to you.
+**No account and no contact details.** Pet Med Reminder does not require an account, does not ask for your email, does not ask for your name, does not access your contacts, does not use your camera (except when *you* attach a pet photo, which never leaves your device and your iCloud), does not ask for your location, and does not use an advertising identifier. It does send anonymous usage analytics, described below.
 
 ### Data the app stores
 
@@ -43,18 +43,26 @@ The app stores the data *you* create: your pet names, the items you schedule, th
 1. **Locally on your iPhone**, in the app's private storage.
 2. **In your personal iCloud account**, via Apple's CloudKit framework, if you have iCloud Drive enabled. This is the same mechanism that backs up Apple's own Notes, Reminders, and Health apps. Your data is stored in *your* iCloud — we have no access to it.
 
-We do not have a server. We do not run a backend. We cannot see your pet's name, your dose history, your photos, or anything else you enter into the app.
+We do not have a server. We do not run a backend. We cannot see your pet's name, your dose history, or your photos. The one exception is the name you give a care item (for example "Apoquel"), which the usage analytics below include.
 
 ### Anonymous usage analytics
 
-The app records a small number of anonymous events through [PostHog](https://posthog.com) to help us understand whether features are working. Each event includes:
+The app records anonymous events through [PostHog](https://posthog.com) so we can see which features work and where people get stuck. The events include:
 
-- A timestamp
-- How many pets you have (1, 2, 3, etc. — never their names)
-- How many caregivers have logged doses on this household (1 or more — never who)
-- The frequency mode of the care item being logged (daily / every-N-days / specific days of week)
+- Which screens you open, and what you do there: adding a pet or a care item, logging, skipping or backfilling a dose, marking a whole round of doses, catching up on missed days, exporting a report
+- Counts: how many pets, care items, and caregivers you have, and how many doses were in a round or a catch-up (never who or what they are called)
+- Each pet's species (dog or cat) and whether it has a photo (never the pet's name or the photo)
+- Each care item's schedule: how often, how many times a day, and whether and how long it runs
+- The name you type for a care item, for example "Apoquel" (up to 64 characters)
+- Where a dose was logged (a notification, the Today screen, History, or catch-up) and how early or late
+- Whether notifications are turned on
+- Repeated quick taps in one spot, which usually mean something isn't working
+- Your device model, iOS version, app version, language, region setting, and time zone
+- A timestamp, and a random ID the app creates when it is installed, so events from the same install can be grouped
 
-**These events do not contain your name, your pet's name, your email, your IP address, your device ID, or any identifier that could be linked back to you.** PostHog is configured to not collect IP addresses or device identifiers.
+PostHog also receives the IP address of each request and uses it to estimate an approximate location (city, region, and country).
+
+**These events do not contain your name, your email, your Apple ID, your pet's name, your photos, or an advertising identifier, and we do not link the random install ID to you.** We never sell this data or use it for advertising.
 
 ### This website
 
@@ -73,6 +81,8 @@ Pet Med Reminder is rated 4+ in the App Store and is not directed at children un
 ### Changes to this policy
 
 If we change this policy, we will update the date above and post the new version at this URL. Material changes will also be noted in the App Store release notes for the next version.
+
+*September 27, 2026:* this policy now lists every kind of usage data the app sends. Earlier versions of this page listed only four of them and said PostHog did not collect IP addresses. That was wrong: PostHog receives the IP address and uses it for an approximate location. Care item names are included in usage data starting with version 1.12.0.
 
 ### Contact
 
