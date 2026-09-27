@@ -1,29 +1,7 @@
 ---
-layout: default
-title: Pet Med Reminder
----
-
-# Pet Med Reminder
-
-A simple iOS app for tracking your pet's medications, supplements, treats, and scheduled care items. Designed for the human caregiver, not the pet.
-
-<p align="center">
-  <img src="assets/app-store-hero.png" alt="Pet Med Reminder Today screen showing scheduled doses for two pets — Murphy and Juno — with completed morning doses and an upcoming dose due in 18 minutes" width="280">
-</p>
-
-[**Download on the App Store →**](https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484)
-
----
-
-## What it does
-
-- Schedule any care item (medication, supplement, chew, drop, treat) for one or more pets.
-- Get a notification when a dose is due. Tap **Mark Given** from the lock screen — no app launch required.
-- See a history of every dose, every pet, every caregiver.
-- Export a vet-ready PDF report any time.
-
-Built for dogs and cats. Multi-pet from day one. No account required.
-
+layout: policy
+title: Privacy policy
+permalink: /privacy/
 ---
 
 ## Privacy Policy
@@ -92,7 +70,3 @@ If we change this policy, we will update the date above and post the new version
 ### Contact
 
 For questions about this policy or how the app handles your data: **dpaola2@gmail.com**.
-
----
-
-© 2026 Dave Paola. Made in Boston.
