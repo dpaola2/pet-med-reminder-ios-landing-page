@@ -43,7 +43,7 @@ The app stores the data *you* create: your pet names, the items you schedule, th
 1. **Locally on your iPhone**, in the app's private storage.
 2. **In your personal iCloud account**, via Apple's CloudKit framework, if you have iCloud Drive enabled. This is the same mechanism that backs up Apple's own Notes, Reminders, and Health apps. Your data is stored in *your* iCloud — we have no access to it.
 
-We do not have a server. We do not run a backend. We cannot see your pet's name, your dose history, or your photos. The one exception is the name you give a care item (for example "Apoquel"), which the usage analytics below include.
+We do not have a server. We do not run a backend, and we do not have access to your iCloud data. We never see your photos. We do see some of what you enter in two ways, both described below: the usage analytics include the name you give a care item (for example "Apoquel"), and session recordings show the app's screens, which can include your pets' names and your doses.
 
 ### Anonymous usage analytics
 
@@ -55,7 +55,8 @@ The app records anonymous events through [PostHog](https://posthog.com) so we ca
 - Each care item's schedule: how often, how many times a day, and whether and how long it runs
 - The name you type for a care item, for example "Apoquel" (up to 64 characters)
 - Where a dose was logged (a notification, the Today screen, History, or catch-up) and how early or late
-- Whether notifications are turned on
+- Whether notifications are turned on, and what you do with a reminder: mark it given, skip it, snooze it, open the app from it, or dismiss it
+- How far ahead your reminders are scheduled, and how long it has been since you last opened the app
 - Repeated quick taps in one spot, which usually mean something isn't working
 - Your device model, iOS version, app version, language, region setting, and time zone
 - A timestamp, and a random ID the app creates when it is installed, so events from the same install can be grouped
@@ -63,6 +64,10 @@ The app records anonymous events through [PostHog](https://posthog.com) so we ca
 PostHog also receives the IP address of each request and uses it to estimate an approximate location (city, region, and country).
 
 **These events do not contain your name, your email, your Apple ID, your pet's name, your photos, or an advertising identifier, and we do not link the random install ID to you.** We never sell this data or use it for advertising.
+
+### Session recordings
+
+Starting with version 1.12.0, the app records how it is used through PostHog, so we can see where people get stuck. A recording is a series of screenshots of the app's own screens while you use it, with your taps and the app's diagnostic log messages. It shows the text on those screens, which can include your pets' names, your care items, and your doses. Photos, including your pet photos, are blocked out on your iPhone before anything is sent. Recordings never include anything outside the app, are grouped only by the random install ID, and are deleted after 30 days.
 
 ### This website
 
@@ -82,7 +87,7 @@ Pet Med Reminder is rated 4+ in the App Store and is not directed at children un
 
 If we change this policy, we will update the date above and post the new version at this URL. Material changes will also be noted in the App Store release notes for the next version.
 
-*September 27, 2026:* this policy now lists every kind of usage data the app sends. Earlier versions of this page listed only four of them and said PostHog did not collect IP addresses. That was wrong: PostHog receives the IP address and uses it for an approximate location. Care item names are included in usage data starting with version 1.12.0.
+*September 27, 2026:* this policy now lists every kind of usage data the app sends. Earlier versions of this page listed only four of them and said PostHog did not collect IP addresses. That was wrong: PostHog receives the IP address and uses it for an approximate location. Care item names, notification responses, reminder scheduling, and session recordings are included starting with version 1.12.0.
 
 ### Contact
 
