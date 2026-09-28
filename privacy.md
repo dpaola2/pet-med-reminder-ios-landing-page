@@ -6,7 +6,7 @@ permalink: /privacy/
 
 ## Privacy Policy
 
-**Last updated:** 2026-09-27
+**Last updated:** 2026-09-28
 
 Pet Med Reminder is built for people who don't want to think about whether their pet app is harvesting their data. Here is exactly what happens, including the usage data the app sends so we can see what works and what doesn't.
 
@@ -49,9 +49,11 @@ Starting with version 1.12.0, the app records how it is used through PostHog, so
 
 ### This website
 
-Most of this website is static and records nothing at all. One page, `/vet`, is the link printed on cards handed out by veterinary clinics, and it records a single anonymous event so we can tell how many people that channel actually reaches. That event contains a timestamp, whether the visitor is on an iPhone, and the referring page if there is one.
+This website uses PostHog, the same analytics service as the app, to count visits. On each page view it records the page address, the referring page, your browser, device type and screen size, and an approximate location (country and city) that PostHog works out from your IP address. When you tap the App Store button, it records that tap, the page it was on and the campaign code in the button's link.
 
-It does not create a profile for you, does not set an advertising identifier, and does not record your session. As with any web request, our analytics provider receives the IP address your request came from. No other page on this site records anything.
+It does not set cookies. It keeps a random session ID in your browser tab's session storage, so that one visit counts once, and the ID is deleted when you close the tab. It does not create a profile for you, does not set an advertising identifier and does not record your session. This page, the privacy policy, records nothing.
+
+One page works differently. `/vet` is the link printed on cards handed out by veterinary clinics. It records a single anonymous event so we can tell how many people that channel reaches: a timestamp, whether the visitor is on an iPhone, and the referring page if there is one. It discards the IP address.
 
 ### Crash reports
 

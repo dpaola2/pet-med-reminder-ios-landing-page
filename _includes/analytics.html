@@ -1,0 +1,36 @@
+<script>
+  // PostHog web analytics. Same project as the iOS app (id 436969), so an ad
+  // click, the landing page and the install funnel sit in one project.
+  // Page views and page exits feed the Web Analytics dashboard; the App Store
+  // button sends one named event with the page and its campaign token (ct).
+  // No autocapture, no session recording, no cookies: the session ID lives in
+  // this tab's sessionStorage and is gone when the tab closes. The privacy
+  // policy's "This website" section describes exactly this.
+  !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group updateEarlyAccessFeatureEnrollment getEarlyAccessFeatures getActiveMatchingSurveys getSurveys getNextSurveyStep onSessionId".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+  posthog.init("phc_oiF5APNqHnUSiXrvkzsnze4LukTe7WiFrYAXzo6zKQLC", {
+    api_host: "https://us.i.posthog.com",
+    autocapture: false,
+    capture_pageview: true,
+    capture_pageleave: true,
+    disable_session_recording: true,
+    disable_surveys: true,
+    capture_dead_clicks: false,
+    // These default on through PostHog's remote config. Off, so the site
+    // records only what the privacy policy lists.
+    capture_performance: false,
+    capture_heatmaps: false,
+    person_profiles: "never",
+    persistence: "sessionStorage"
+  });
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest("a.store-badge");
+    if (!a) return;
+    var ct = null;
+    try { ct = new URL(a.href).searchParams.get("ct"); } catch (err) {}
+    posthog.capture("app_store_clicked", {
+      page: location.pathname,
+      ct: ct,
+      variant: document.body.getAttribute("data-variant")
+    }, { transport: "sendBeacon" });
+  });
+</script>
