@@ -6,13 +6,13 @@ permalink: /privacy/
 
 ## Privacy Policy
 
-**Last updated:** 2026-09-28
+**Last updated:** 2026-10-06
 
 Pet Med Reminder is built for people who don't want to think about whether their pet app is harvesting their data. Here is exactly what happens, including the usage data the app sends so we can see what works and what doesn't.
 
 ### Data we collect about you
 
-**No account and no contact details.** Pet Med Reminder does not require an account, does not ask for your email, does not ask for your name, does not access your contacts, does not use your camera (except when *you* attach a pet photo, which never leaves your device and your iCloud), does not ask for your location, and does not use an advertising identifier. It does send anonymous usage analytics, described below.
+**No account and no contact details.** Pet Med Reminder does not require an account, does not ask for your email, does not ask for your name, does not access your contacts, does not use your camera (except when *you* attach a pet photo, which never leaves your device and your iCloud), does not ask for your location, and does not use an advertising identifier. It does send anonymous usage analytics, and it tells Meta when the app is installed and opened, both described below.
 
 ### Data the app stores
 
@@ -57,6 +57,19 @@ One page works differently. `/vet` is the link printed on cards handed out by ve
 
 Two pages also work differently. `/go/a` and `/go/b` are the links in our Instagram ads, and they send you straight on to the App Store. Before they do, they record one event: the page, the ad's campaign code and tags, the referring page, your browser, and an approximate location that PostHog works out from your IP address. They set no cookie, store no ID in your browser and create no profile.
 
+### Meta (Instagram and Facebook ads)
+
+Starting with version 1.12.1, the app includes Meta's software development kit (SDK), so we can count how many installs our Instagram and Facebook ads bring. The app sends Meta:
+
+- One event the first time the app opens after it is installed, and one event each time the app opens
+- With each event: your device model, iOS version, app version, language, time zone, mobile carrier, screen size, and a random ID that Meta's SDK creates on your iPhone
+- The IP address of each request, which Meta receives as part of the connection
+- If Meta's SDK itself crashes or hits an error, a report about Meta's own code
+
+Apple also sends Meta an install report through SKAdNetwork, Apple's ad measurement system. That report contains no identifier for you or your device.
+
+Meta does not receive your pets, your care items, your doses, your photos, or anything else you enter in the app. It does not receive your name, your email, your Apple ID, or your device's advertising identifier: the app never reads it. The app never asks for permission to track you. Without that permission, iOS blocks the parts of Meta's SDK that track, and Meta says it uses such events only through privacy-preserving methods (its "Aggregated Event Measurement") to measure ads. Meta handles this data under [its own privacy policy](https://www.facebook.com/privacy/policy/).
+
 ### Crash reports
 
 If the app crashes, Apple's TestFlight or App Store Connect may automatically send us a crash report. These reports are anonymous and contain only information about *what* went wrong (stack trace, device model, iOS version) — not who you are or what was in your data.
@@ -70,6 +83,8 @@ Pet Med Reminder is rated 4+ in the App Store and is not directed at children un
 If we change this policy, we will update the date above and post the new version at this URL. Material changes will also be noted in the App Store release notes for the next version.
 
 *September 27, 2026:* this policy now lists every kind of usage data the app sends. Earlier versions of this page listed only four of them and said PostHog did not collect IP addresses. That was wrong: PostHog receives the IP address and uses it for an approximate location. Care item names, notification responses, reminder scheduling, and session recordings are included starting with version 1.12.0.
+
+*October 6, 2026:* added the Meta section. Version 1.12.1 is the first version that sends anything to Meta.
 
 ### Contact
 
