@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pet Med Reminder on the App Store</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#FBF9F6">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="stylesheet" href="/assets/fonts.css">
+<link rel="stylesheet" href="/assets/site.css">
+<meta http-equiv="refresh" content="2; url={{ include.store_url }}">
+<script>
+  // Ad redirect. The Instagram ads open this page, and it sends the visitor
+  // straight to the App Store product page for the ad (custom product page and
+  // campaign token in store_url). Before it leaves, it sends one event,
+  // store_redirect, to the same PostHog project as the site and the app
+  // (436969). The event has no cookie, no stored ID and no person profile: a
+  // random ID for this one request, the page, the ad's tokens and the browser.
+  (function () {
+    var url = "{{ include.store_url }}";
+    try {
+      var q = new URLSearchParams(location.search);
+      var props = {
+        $process_person_profile: false,
+        $lib: "web-redirect",
+        $current_url: location.href,
+        $pathname: location.pathname,
+        $referrer: document.referrer || "$direct",
+        $raw_user_agent: navigator.userAgent,
+        page: location.pathname,
+        ct: "{{ include.ct }}",
+        variant: "{{ include.variant }}"
+      };
+      ["utm_source", "utm_medium", "utm_campaign", "utm_content"].forEach(function (k) {
+        if (q.get(k)) props[k] = q.get(k);
+      });
+      var id = (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Math.random()).slice(2);
+      fetch("https://us.i.posthog.com/i/v0/e/", {
+        method: "POST",
+        keepalive: true,
+        headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify({
+          api_key: "phc_oiF5APNqHnUSiXrvkzsnze4LukTe7WiFrYAXzo6zKQLC",
+          event: "store_redirect",
+          distinct_id: id,
+          properties: props
+        })
+      }).catch(function () {});
+    } catch (err) {}
+    location.replace(url);
+  })();
+</script>
+</head>
+<body>
+<main id="main">
+  <section class="hero">
+    <div class="wrap">
+      <p class="support">Opening the App Store…</p>
+      <div class="get">
+        <a class="store-badge" href="{{ include.store_url }}"><img src="/assets/img/app-store-badge.svg" width="156" height="52" alt="Download on the App Store"></a>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

@@ -55,6 +55,8 @@ It does not set cookies. It keeps a random session ID in your browser tab's sess
 
 One page works differently. `/vet` is the link printed on cards handed out by veterinary clinics. It records a single anonymous event so we can tell how many people that channel reaches: a timestamp, whether the visitor is on an iPhone, and the referring page if there is one. It discards the IP address.
 
+Two pages also work differently. `/go/a` and `/go/b` are the links in our Instagram ads, and they send you straight on to the App Store. Before they do, they record one event: the page, the ad's campaign code and tags, the referring page, your browser, and an approximate location that PostHog works out from your IP address. They set no cookie, store no ID in your browser and create no profile.
+
 ### Crash reports
 
 If the app crashes, Apple's TestFlight or App Store Connect may automatically send us a crash report. These reports are anonymous and contain only information about *what* went wrong (stack trace, device model, iOS version) — not who you are or what was in your data.
