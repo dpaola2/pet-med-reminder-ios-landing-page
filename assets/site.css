@@ -251,6 +251,29 @@ h2.subhead {
   text-wrap: pretty;
 }
 
+/* Ad landing pages (/a/, /b/): three short reasons above the button */
+
+.reasons {
+  list-style: none;
+  max-width: 34rem;
+  margin: 1.2em auto 1.5em;
+  padding: 0;
+  text-wrap: pretty;
+}
+.reasons li { margin: 0 0 0.45em; }
+.reasons li:last-child { margin-bottom: 0; }
+.reasons strong { font-weight: 600; color: var(--deep-sage); }
+
+.note strong { font-weight: 600; color: var(--ink); }
+
+/* The phone screen on the ad landing pages also opens the App Store */
+
+.store-link {
+  position: relative;
+  display: block;
+  border-radius: calc(var(--device) * 0.165);
+}
+
 .hero-visual {
   position: relative;
   margin-top: 44px;

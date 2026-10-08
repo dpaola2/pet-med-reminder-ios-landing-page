@@ -6,7 +6,7 @@ permalink: /privacy/
 
 ## Privacy Policy
 
-**Last updated:** 2026-10-06
+**Last updated:** 2026-10-08
 
 Pet Med Reminder is built for people who don't want to think about whether their pet app is harvesting their data. Here is exactly what happens, including the usage data the app sends so we can see what works and what doesn't.
 
@@ -49,7 +49,7 @@ Starting with version 1.12.0, the app records how it is used through PostHog, so
 
 ### This website
 
-This website uses PostHog, the same analytics service as the app, to count visits. On each page view it records the page address, the referring page, your browser, device type and screen size, and an approximate location (country and city) that PostHog works out from your IP address. When you tap the App Store button, it records that tap, the page it was on and the campaign code in the button's link.
+This website uses PostHog, the same analytics service as the app, to count visits. On each page view it records the page address, the referring page, your browser, device type and screen size, and an approximate location (country and city) that PostHog works out from your IP address. When you tap a link to the App Store, it records that tap, the page it was on, which link on the page you tapped and the campaign code in the link.
 
 It does not set cookies. It keeps a random session ID in your browser tab's session storage, so that one visit counts once, and the ID is deleted when you close the tab. It does not create a profile for you, does not set an advertising identifier and does not record your session. This page, the privacy policy, records nothing.
 

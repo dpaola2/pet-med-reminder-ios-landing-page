@@ -22,15 +22,20 @@
     person_profiles: "never",
     persistence: "sessionStorage"
   });
+  // `link` says which App Store link was tapped (hero, screen or closing on
+  // the ad pages; badge elsewhere). `page_version` marks the page revision, so
+  // a before-and-after read does not depend on CDN cache timing.
   document.addEventListener("click", function (e) {
-    var a = e.target.closest && e.target.closest("a.store-badge");
+    var a = e.target.closest && e.target.closest("a.store-badge, a.store-link");
     if (!a) return;
     var ct = null;
     try { ct = new URL(a.href).searchParams.get("ct"); } catch (err) {}
     posthog.capture("app_store_clicked", {
       page: location.pathname,
       ct: ct,
-      variant: document.body.getAttribute("data-variant")
+      variant: document.body.getAttribute("data-variant"),
+      link: a.getAttribute("data-link") || "badge",
+      page_version: document.body.getAttribute("data-page-version")
     }, { transport: "sendBeacon" });
   });
 </script>
