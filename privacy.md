@@ -6,7 +6,7 @@ permalink: /privacy/
 
 ## Privacy Policy
 
-**Last updated:** 2026-11-01
+**Last updated:** 2026-11-11
 
 Pet Med Reminder is built for people who don't want to think about whether their pet app is harvesting their data. Here is exactly what happens, including the usage data the app sends so we can see what works and what doesn't.
 
@@ -56,7 +56,7 @@ This website uses PostHog, the same analytics service as the app, to count visit
 
 It does not set cookies. It keeps a random session ID in your browser tab's session storage, so that one visit counts once, and the ID is deleted when you close the tab. It does not create a profile for you, does not set an advertising identifier and does not record your session. This page, the privacy policy, records nothing.
 
-One page works differently. `/vet` is the link printed on cards handed out by veterinary clinics. It records a single anonymous event so we can tell how many people that channel reaches: a timestamp, whether the visitor is on an iPhone, and the referring page if there is one. It discards the IP address.
+One page works differently. `/vet` is the link printed on cards handed out by veterinary clinics. It records one event so we can tell how many people that channel reaches: the page address (which can name the clinic that handed out the card), whether the visitor is on an iPhone, the referring page, your browser, and an approximate location that PostHog works out from your IP address. It sets no cookie, stores no ID in your browser and creates no profile.
 
 Two pages also work differently. `/go/a` and `/go/b` are the links in our Instagram ads, and they send you straight on to the App Store. Before they do, they record one event: the page, the ad's campaign code and tags, the referring page, your browser, and an approximate location that PostHog works out from your IP address. They set no cookie, store no ID in your browser and create no profile.
 
@@ -96,6 +96,8 @@ If we change this policy, we will update the date above and post the new version
 *October 6, 2026:* added the Meta section. Version 1.12.1 is the first version that sends anything to Meta.
 
 *November 1, 2026:* added the Apple Ads section and the new usage events in version 1.13.0: a random ID for each pet and care item, changes and deletes, the end of a set-length care item, and where the app asked for notifications.
+
+*November 11, 2026:* corrected the `/vet` section. It said the page discards the IP address. That was wrong: PostHog receives the IP address from that page too, and uses it for an approximate location, as on the other pages of this site.
 
 ### Contact
 
