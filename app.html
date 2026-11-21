@@ -45,10 +45,12 @@ sitemap: false
     var appStore = "https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484?pt=364248&ct=" + src + "&mt=8";
     var android = "/android/";
     var ua = navigator.userAgent;
-    var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    // Android first: the iPad test below also matches any touch device that
+    // reports a Mac platform, so it must not see an Android user agent.
     var isAndroid = /Android/i.test(ua);
-    if (isIOS) { location.replace(appStore); return; }
+    var isIOS = !isAndroid && (/iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
     if (isAndroid) { location.replace(android); return; }
+    if (isIOS) { location.replace(appStore); return; }
     document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("ios").href = appStore;
       document.getElementById("android").href = android;
