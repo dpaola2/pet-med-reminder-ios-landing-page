@@ -6,49 +6,44 @@ permalink: /privacy/
 
 ## Privacy Policy
 
-**Last updated:** 2026-11-11
+**Last updated:** 2026-11-21
 
-Pet Med Reminder is built for people who don't want to think about whether their pet app is harvesting their data. Here is exactly what happens, including the usage data the app sends so we can see what works and what doesn't.
+This page lists what Pet Med Reminder collects and why. The app sends detailed usage data so that we can see what works, find problems and improve it.
 
 ### Data we collect about you
 
-**No account and no contact details.** Pet Med Reminder does not require an account, does not ask for your email, does not ask for your name, does not access your contacts, does not use your camera (except when *you* attach a pet photo, which never leaves your device and your iCloud), does not ask for your location, and does not use an advertising identifier. It does send anonymous usage analytics, it tells Meta when the app is installed and opened, and it asks Apple whether an Apple ad brought the install. All three are described below.
+**No account and no contact details.** Pet Med Reminder does not require an account, does not ask for your email or your name, does not access your contacts, does not ask for your location, and does not use an advertising identifier. The app sends usage analytics that include what you enter in it, it tells Meta when the app is installed and opened, and it asks Apple whether an Apple ad brought the install. All three are described below.
 
 ### Data the app stores
 
-The app stores the data *you* create: your pet names, the items you schedule, the doses you log, and any photos you attach. This data is stored:
+The app stores the data you create: your pets, the items you schedule, the doses you log, and any photos you attach. This data is stored:
 
 1. **Locally on your iPhone**, in the app's private storage.
-2. **In your personal iCloud account**, via Apple's CloudKit framework, if you have iCloud Drive enabled. This is the same mechanism that backs up Apple's own Notes, Reminders, and Health apps. Your data is stored in *your* iCloud — we have no access to it.
+2. **In your personal iCloud account**, through Apple's CloudKit framework, if iCloud is on. We have no access to your iCloud data.
 
-We do not have a server. We do not run a backend, and we do not have access to your iCloud data. We never see your photos. We do see some of what you enter in two ways, both described below: the usage analytics include the name you give a care item (for example "Apoquel"), and session recordings show the app's screens, which can include your pets' names and your doses.
+We do not run a server for your records. A copy of much of what you enter reaches us through the usage analytics and the session recordings described below.
 
-### Anonymous usage analytics
+### Usage analytics
 
-The app records anonymous events through [PostHog](https://posthog.com) so we can see which features work and where people get stuck. The events include:
+The app sends events to [PostHog](https://posthog.com). They include:
 
-- Which screens you open, and what you do there: adding, changing or deleting a pet or a care item, logging, skipping or backfilling a dose, marking a whole round of doses, catching up on missed days, exporting a report
-- When a care item that runs for a set number of days comes to its end: how many days it ran, and how many doses were given, skipped or missed
-- When you change a care item, which parts you changed (for example the schedule or the dose), never the old or new values
-- Counts: how many pets, care items, and caregivers you have, and how many doses were in a round or a catch-up (never who or what they are called)
-- Each pet's species (dog or cat) and whether it has a photo (never the pet's name or the photo)
-- Each care item's schedule: how often, how many times a day, and whether and how long it runs
-- The name you type for a care item, for example "Apoquel" (up to 64 characters)
-- Where a dose was logged (a notification, the Today screen, History, or catch-up) and how early or late
-- Whether notifications are turned on, where the app asked (after your first care item, in Settings, or from the reminder banner), and what you do with a reminder: mark it given, skip it, snooze it, open the app from it, or dismiss it
-- How far ahead your reminders are scheduled, and how long it has been since you last opened the app
-- Repeated quick taps in one spot, which usually mean something isn't working
-- Your device model, iOS version, app version, language, region setting, and time zone
-- A timestamp, and a random ID the app creates when it is installed, so events from the same install can be grouped
-- A random ID for each pet and each care item, so events about the same medicine can be grouped. The ID is a random number, never the pet's name
+- The screens you open and what you do there: adding, changing, stopping or deleting a pet or a care item; logging, skipping or backfilling a dose; marking a round of doses; catching up on missed days; sharing a report or a care sheet
+- What you enter: each pet's name and species, each care item's name, dose amount, the vet's instructions and the food rule, its schedule and how long it runs, and the scheduled and actual time of each dose
+- When a course ends or is stopped, and how many doses were given, skipped or missed
+- Counts of pets, care items and caregivers, and a random ID for each pet and each care item
+- Whether notifications are on, where the app asked, and what you do with each reminder (mark it given, skip it, snooze it, open the app from it or dismiss it)
+- When the app is installed, updated, opened and closed, and links that open it
+- Crashes and errors in the app, with technical details of what went wrong
+- Your device model, iOS version, app version, language, region setting and time zone
+- A timestamp, and a random ID the app creates when it is installed. PostHog keeps a profile for that ID with your number of pets and care items, their species, your notification setting and your app version
 
-PostHog also receives the IP address of each request and uses it to estimate an approximate location (city, region, and country).
+PostHog also receives the IP address of each request and uses it to estimate an approximate location (city, region and country).
 
-**These events do not contain your name, your email, your Apple ID, your pet's name, your photos, or an advertising identifier, and we do not link the random install ID to you.** We never sell this data or use it for advertising.
+The analytics do not contain your name, your email, your Apple ID or an advertising identifier. We use this data to improve the app. We do not sell it or use it for advertising.
 
 ### Session recordings
 
-Starting with version 1.12.0, the app records how it is used through PostHog, so we can see where people get stuck. A recording is a series of screenshots of the app's own screens while you use it, with your taps and the app's diagnostic log messages. It shows the text on those screens, which can include your pets' names, your care items, and your doses. Photos, including your pet photos, are blocked out on your iPhone before anything is sent. Recordings never include anything outside the app, are grouped only by the random install ID, and are deleted after 30 days.
+The app records how it is used through PostHog. A recording is a series of screenshots of the app's own screens while you use it, with your taps, the app's log messages and its network requests. Starting with version 2.0.2, nothing on the screen is blocked out: recordings show the text and the photos on the app's screens, including your pets' names and photos, your care items and your doses. Recordings never include anything outside the app, are grouped by the random install ID, and are deleted after 30 days.
 
 ### This website
 
@@ -81,7 +76,7 @@ The token contains no identifier for you, and the app does not read your device'
 
 ### Crash reports
 
-If the app crashes, Apple's TestFlight or App Store Connect may automatically send us a crash report. These reports are anonymous and contain only information about *what* went wrong (stack trace, device model, iOS version) — not who you are or what was in your data.
+If the app crashes, Apple may send us a crash report through App Store Connect, with technical details of what went wrong (stack trace, device model, iOS version). Starting with version 2.0.2, the app also sends crash and error reports to PostHog, as described under usage analytics.
 
 ### Children
 
@@ -96,6 +91,8 @@ If we change this policy, we will update the date above and post the new version
 *October 6, 2026:* added the Meta section. Version 1.12.1 is the first version that sends anything to Meta.
 
 *November 1, 2026:* added the Apple Ads section and the new usage events in version 1.13.0: a random ID for each pet and care item, changes and deletes, the end of a set-length care item, and where the app asked for notifications.
+
+*November 21, 2026:* version 2.0.2 sends more usage data: pet names, care item names, dose amounts, the vet's instructions, food rules and dose times on its events; a profile for each install; crash and error reports. Session recordings no longer block out photos. This page now describes that.
 
 *November 11, 2026:* corrected the `/vet` section. It said the page discards the IP address. That was wrong: PostHog receives the IP address from that page too, and uses it for an approximate location, as on the other pages of this site.
 
