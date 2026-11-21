@@ -1,0 +1,68 @@
+---
+layout: null
+permalink: /app/
+sitemap: false
+---
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Get Pet Med Reminder</title>
+<style>
+  :root { --bg: #ffffff; --fg: #1a1a1a; --muted: #5c5c5c; --accent: #2f6f4f; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #151515; --fg: #f2f2f2; --muted: #a6a6a6; --accent: #7fc0a0; }
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font: 17px/1.55 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    display: flex; justify-content: center; padding: 2.5rem 1.25rem 3rem;
+  }
+  main { width: 100%; max-width: 30rem; }
+  h1 { font-size: 1.5rem; line-height: 1.25; margin: 0 0 1.25rem; }
+  p { margin: 0 0 1.1rem; }
+  .muted { color: var(--muted); font-size: 0.9375rem; }
+  .cta {
+    display: block; text-align: center; background: var(--accent); color: #fff;
+    text-decoration: none; font-weight: 600; padding: 0.85rem 1.4rem;
+    border-radius: 10px; margin: 0 0 0.9rem;
+  }
+  @media (prefers-color-scheme: dark) { .cta { color: #10231a; } }
+</style>
+<script>
+  // One link for printed material (for example the Android care sheet QR code).
+  // It sends each phone to the right place and records nothing:
+  //   iPhone and iPad: the App Store, with ?src= as the App Store campaign token.
+  //   Android: the tester page until the app is on Google Play.
+  //   Anything else: this page, with both choices.
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var src = (q.get("src") || "app-link").toLowerCase().replace(/[^a-z0-9-]/g, "").slice(0, 40) || "app-link";
+    var appStore = "https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484?pt=364248&ct=" + src + "&mt=8";
+    var android = "/android/";
+    var ua = navigator.userAgent;
+    var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var isAndroid = /Android/i.test(ua);
+    if (isIOS) { location.replace(appStore); return; }
+    if (isAndroid) { location.replace(android); return; }
+    document.addEventListener("DOMContentLoaded", function () {
+      document.getElementById("ios").href = appStore;
+      document.getElementById("android").href = android;
+    });
+  })();
+</script>
+</head>
+<body>
+<main>
+  <h1>Get Pet Med Reminder</h1>
+  <p>It reminds you when each dose is due and keeps a log of every dose to show your vet.</p>
+  <a class="cta" id="ios" href="https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484">iPhone: App Store</a>
+  <a class="cta" id="android" href="/android/">Android: join the testers</a>
+  <p class="muted">Open this page on your phone to go straight to the right place.</p>
+</main>
+</body>
+</html>
