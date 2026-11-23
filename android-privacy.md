@@ -38,7 +38,7 @@ Release builds on real devices send usage data to PostHog in the United States o
 - when you open History or export a PDF, the number of days and doses in it
 - when you tap Rate Pet Med Reminder, and when the app asks Google Play to show its rating card
 - the number of pets, care items and doses, the species of your pets, the app version and the first app version you used, kept with this installation's profile
-- whether you marked this phone as a test device in Settings
+- whether you marked this phone as a test device in Settings, or the phone is one of Google Play's test devices
 - device and app details, such as the app version, Android version, device maker and model, screen size, language, time zone, network type and mobile carrier, and whether the app was installed from Google Play
 - app logs, errors and crash reports
 - an approximate location that PostHog derives from your IP address
