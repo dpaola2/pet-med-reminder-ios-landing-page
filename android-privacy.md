@@ -5,7 +5,7 @@ permalink: /android-privacy/
 ---
 
 # Pet Med Reminder for Android: Privacy Policy
-Updated November 21, 2026
+Updated November 23, 2026
 
 Pet Med Reminder Tracker is published by Enginery. Contact: dpaola2@gmail.com.
 
@@ -34,6 +34,7 @@ Release builds on real devices send usage data to PostHog in the United States o
 - when you stop a care item or every reminder for a pet, and the reason you choose, including that a pet died
 - when a course of medicine finishes, and how many of its doses were given, skipped or missed
 - when you share a care sheet: the pet, the names of the care items on it and the app you chose in the share sheet
+- when you tap Share Pet Med Reminder, and the app you chose in the share sheet
 - when you open History or export a PDF, the number of days and doses in it
 - when you tap Rate Pet Med Reminder, and when the app asks Google Play to show its rating card
 - the number of pets, care items and doses, the species of your pets, the app version and the first app version you used, kept with this installation's profile
