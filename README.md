@@ -1,1 +1,1 @@
-Source for the Pet Med Reminder iOS app landing page + privacy policy. Hosted via GitHub Pages. Live at: `https://dpaola2.github.io/pet-med-reminder-ios-landing-page/`.
+Source for petmedreminder.com: the Pet Med Reminder landing pages for iPhone and Android, and the privacy policies for both apps. Hosted via GitHub Pages. Live at: `https://petmedreminder.com/`.

@@ -10,6 +10,8 @@ permalink: /privacy/
 
 This page lists what Pet Med Reminder collects and why. The app sends detailed usage data so that we can see what works, find problems and improve it.
 
+This policy covers the app for iPhone and iPad. The Android app has its own policy: [Pet Med Reminder for Android privacy policy](/android-privacy/).
+
 ### Data we collect about you
 
 **No account and no contact details.** Pet Med Reminder does not require an account, does not ask for your email or your name, does not access your contacts, does not ask for your location, and does not use an advertising identifier. The app sends usage analytics that include what you enter in it, it tells Meta when the app is installed and opened, and it asks Apple whether an Apple ad brought the install. All three are described below.

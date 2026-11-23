@@ -53,6 +53,7 @@ sitemap: false
     margin: 0.35rem 0 1.4rem;
   }
   @media (prefers-color-scheme: dark) { .cta { color: #10231a; } }
+  #ctas { display: flex; flex-wrap: wrap; gap: 0 0.6rem; }
   hr { border: 0; border-top: 1px solid var(--rule); margin: 1.75rem 0; }
   .hidden { display: none; }
 </style>
@@ -61,31 +62,38 @@ sitemap: false
 <main>
   <h1>Your veterinarian suggested keeping a record of your pet&rsquo;s medication.</h1>
 
-  <p class="lede">Pet Med Reminder is a free iPhone app that reminds you when a dose is due and keeps a log you can bring to the next appointment.</p>
+  <p class="lede">Pet Med Reminder is a free app for iPhone and Android. It reminds you when a dose is due and keeps a log you can bring to the next appointment.</p>
 
   <p id="redirect-note" class="muted hidden">Taking you to the App Store&hellip;</p>
 
-  <a class="cta" id="store-link" href="https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484">View on the App Store</a>
+  <div id="ctas">
+    <a class="cta" id="store-link" href="https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484">iPhone: App Store</a>
+    <a class="cta" id="android-link" href="/android/">Android: join the testers</a>
+  </div>
 
   <p class="muted" id="other-platform">
-    Not on an iPhone? An Android version is in testing, and you can <a href="/android/">join the testers</a>. Until then, a paper log works too: write down each dose as you give it, and bring it with you to the recheck. What matters is that your vet can see what actually happened between visits.
+    The Android version is in testing. Google needs a group of testers before a new app can go on Google Play, and the testers page shows how to get it. A paper log works too: write down each dose as you give it, and bring it with you to the recheck. What matters is that your vet can see what actually happened between visits.
   </p>
 
   <hr>
 
   <p class="muted">
-    No account, no signup. Your records stay on your iPhone and in your own iCloud. The app also sends usage data, including what you enter, and the privacy policy lists all of it.
-    <a href="/privacy/">Privacy policy</a>
+    No account, no signup. Your records stay on your phone, and on iPhone also in your own iCloud. The app also sends usage data, including what you enter, and the privacy policy lists all of it.
+    <a href="/privacy/">iPhone privacy policy</a> &middot; <a href="/android-privacy/">Android privacy policy</a>
   </p>
 </main>
 
 <script>
 (function () {
   var STORE_URL = "https://apps.apple.com/us/app/pet-med-reminder-tracker/id6772127484";
-  var isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
-    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  // Android first: the iPad test below also matches any touch device that
+  // reports a Mac platform, so it must not see an Android user agent (the same
+  // order as /app/).
+  var isAndroid = /Android/i.test(navigator.userAgent);
+  var isIOS = !isAndroid && (/iPad|iPhone|iPod/.test(navigator.userAgent)
+    || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1));
 
-  // PostHog. Same project as the iOS app (Zen Space Labs, id 436969), so a vet
+  // PostHog. Same project as both apps (Zen Space Labs, id 436969), so a vet
   // referral and the install funnel it feeds sit in one project.
   //
   // Deliberately narrow, for the same reason PMR-17 turned screen autocapture
@@ -123,19 +131,23 @@ sitemap: false
   // sendBeacon so the event survives the redirect below. This is the whole
   // point of the page: a hit that is not recorded before navigation is a hit
   // that did not happen.
+  // `platform` was "ios" or "other" until Nov 23, 2026; Android visits were in
+  // "other". From then, Android has its own value.
   posthog.capture("vet_referral_landed", {
-    platform: isIOS ? "ios" : "other",
+    platform: isIOS ? "ios" : (isAndroid ? "android" : "other"),
     referrer: document.referrer || null
   }, { transport: "sendBeacon" });
 
   // iPhone visitors go straight through; the delay is only there to give the
-  // beacon a moment. Everyone else stays and reads the paper-log fallback,
-  // because sending an Android owner to an iPhone-only App Store page is a
-  // dead end that reflects badly on the vet who handed them the card.
+  // beacon a moment. Android visitors stay and see only the Android button,
+  // because the App Store is a dead end for them. Anyone else sees both.
   if (isIOS) {
     document.getElementById("redirect-note").classList.remove("hidden");
     document.getElementById("other-platform").classList.add("hidden");
+    document.getElementById("android-link").classList.add("hidden");
     setTimeout(function () { window.location.replace(STORE_URL); }, 900);
+  } else if (isAndroid) {
+    document.getElementById("store-link").classList.add("hidden");
   }
 })();
 </script>
