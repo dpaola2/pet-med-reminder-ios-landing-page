@@ -30,6 +30,7 @@ We do not run a server for your records. A copy of much of what you enter reache
 The app sends events to [PostHog](https://posthog.com). They include:
 
 - The screens you open and what you do there: adding, changing, stopping or deleting a pet or a care item; logging, skipping or backfilling a dose; marking a round of doses; catching up on missed days; sharing a report or a care sheet
+- Starting with version 2.0.3, when you tap Share Pet Med Reminder in Settings, and the app you chose in the share sheet
 - What you enter: each pet's name and species, each care item's name, dose amount, the vet's instructions and the food rule, its schedule and how long it runs, and the scheduled and actual time of each dose
 - When a course ends or is stopped, and how many doses were given, skipped or missed
 - Counts of pets, care items and caregivers, and a random ID for each pet and each care item
